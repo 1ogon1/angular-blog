@@ -8,5 +8,5 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Admin panel
 [Go to panel](https://rkonoval-blog.web.app/admin)
 
-##### Login: test@email.com
+##### Login: test@mail.com
 ##### Password: 123456

@@ -1,0 +1,36 @@
+<form class="card" [formGroup]="form" (ngSubmit)="submit()">
+  <h2>Login</h2>
+
+  <div class="alert alert-danger" *ngIf="auth.error$ | async  as error">
+    {{error}}
+  </div>
+
+  <div class="alert alert-info" *ngIf="message">
+    {{message}}
+  </div>
+
+  <div class="form-control" [ngClass]="{invalid: form.get('email').touched && form.get('email').invalid}">
+    <label for="email">Email</label>
+    <input type="email" id="email" formControlName="email">
+
+    <div class="validation" *ngIf="form.get('email').touched && form.get('email').invalid">
+      <small *ngIf="form.get('email').errors.required">Email is required</small>
+      <small *ngIf="form.get('email').errors.email">Invalid input</small>
+    </div>
+  </div>
+
+  <div class="form-control" [ngClass]="{invalid: form.get('password').touched && form.get('password').invalid}">
+    <label for="password">Password</label>
+    <input type="password" id="password" formControlName="password">
+
+    <div class="validation" *ngIf="form.get('password').touched && form.get('password').invalid">
+      <small *ngIf="form.get('password').errors.required">Password is required</small>
+      <small *ngIf="form.get('password').errors.minlength">
+        Min length is
+        {{form.get('password').errors.minlength.requiredLength}}
+      </small>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="form.invalid || form.pending || loading">Login</button>
+</form>
